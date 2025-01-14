@@ -5,13 +5,11 @@ rodCast := 1000 ; How long it holds down to cast your rod
 
 ToolTip, Task: Setting Up Macro, x, y, 1
 ToolTip, Control: %control%, x, y, 2
-ToolTip, Lure Speed: %lureSpeed%, x, y, 3
 ToolTip, Error: None, x, y, 4
 ToolTip, Press P to Start, x, y, 5
 ToolTip, Press T to Stop, x, y, 6
 
 CastRod() {
-    global rodCast
     Click down
     Sleep %rodCast%
     Click up
@@ -34,23 +32,7 @@ ShakeRod() {
 }
 
 Minigame() {
-    barLeftX := PIXEL LOCATION
-    barLeftY := PIXEL LOCATION
-    barRightX := PIXEL LOCATION
-    barRightY := PIXEL LOCATION
-    barCheckLeft := 0x000000
-    barCheckRight := 0x000000
-
-    Loop {
-        PixelGetColor, BarCheck, barLeftX, barLeftY
-        if (BarCheckLeft != 0xFFFFFF) {
-            Click down
-            PixelGetColor, BarCheckRight, barRightX, barRightY
-            Sleep 1000
-            if (BarCheckRight != 0xFFFFFF)
-            Click up
-        }
-    }
+    PixelSearch, FishX, FishY, 246, 533, 569, 533, 0x434b5b, 3, FastRGB
 }
 
 p::
