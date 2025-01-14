@@ -6,6 +6,8 @@ rodCast := 1000 ; How long it holds down to cast your rod
 BarLeft := ; Far left pixel of bar
 BarRight := ; Far right pixel of bar
 BarCenter := (BarLeft + BarRight)/2
+BarMiddleRight := (BarCenter + BarRight)/2
+BarMiddleLeft := (BarCenter + BarLeft)/2
 
 ToolTip, Task: Setting Up Macro, x, y, 1
 ToolTip, Control: %control%, x, y, 2
@@ -36,15 +38,17 @@ ShakeRod() {
 }
 
 Minigame() {
-    PixelSearch, FishX, FishY, 246, 533, 569, 533, 0x434b5b, 3, FastRGB
-    if (ErrorLevel = 0) {
+    PixelSearch, FishX, FishY, 246, 533, 569, 533, 0x434b5b, 3, Fast RGB
+    if (!ErrorLevel) {
         while (FishX > BarCenter) {
             Click down
-        } else {
+            Sleep, 100
+        }
         Click up
-    }
     } else {
-        ToolTip, Error: Fish Not Found, x, y, 4
+        ToolTip, Error: Fish Not Found
+        Sleep, 2000 ; Tooltip will show for 2 seconds
+        ToolTip ; Clear the tooltip
     }
 }
 
