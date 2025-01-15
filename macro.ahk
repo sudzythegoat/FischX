@@ -38,7 +38,12 @@ Loop
        PixelSearch, FoundX, FoundY, 520, 809, 1379, 942, 0x434B5B, 3, Fast RGB
        if (!ErrorLevel) {
            Tooltip, FISCH LOCATION, FoundX, 800
-           Sleep 50
+           While (FoundX > BarCenter) {
+	       Click Down
+               Sleep 50
+	   }
+	   Click up
+      	   Sleep 50
        } else {
            Tooltip, Not Found
            fail += 1
