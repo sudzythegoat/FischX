@@ -3,6 +3,11 @@ rodCast := 1000 ; How long it holds down to cast your rod
 
 ; ========== Do not change any vars below ==========
 
+ToolX := ScreenHeight/2
+
+Tooltip, Made by sudzythegoat, ToolX, 0, 1
+Tooltip, Made by
+
 p::
 Loop
 {  
